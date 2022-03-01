@@ -38,12 +38,10 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
         }catch(error){
             console.log('Error creating user', error.message);
         }
-    } else {
-        console.log("No such document!");
     }
 
 
-    return docRef;
+    return docSnap;
 }
 
 export const auth = getAuth();
