@@ -1,7 +1,9 @@
 import { initializeApp } from 'firebase/app';
-// import { } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { 
+    getFirestore, getDoc, doc,
+    setDoc 
+} from 'firebase/firestore';
 
 
 const config = {
@@ -16,6 +18,33 @@ const config = {
 
 const app = initializeApp(config);
 const db = getFirestore(app);
+
+export const createUserProfileDocument = async(userAuth, additionalData) => {
+    if(!userAuth) return;
+
+    const docRef = doc(db, "users", userAuth.uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        try{
+            await setDoc(docRef, {
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            });
+        }catch(error){
+            console.log('Error creating user', error.message);
+        }
+    } else {
+        console.log("No such document!");
+    }
+
+
+    return docRef;
+}
 
 export const auth = getAuth();
 // export const firestore = firebase.firestore();
