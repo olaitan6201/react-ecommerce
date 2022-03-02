@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { 
     getAuth, GoogleAuthProvider, signInWithPopup,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword, signInWithEmailAndPassword
 } from 'firebase/auth';
 import { 
     getFirestore, getDoc, doc,
@@ -48,13 +48,12 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 }
 
 export const auth = getAuth();
-// export const firestore = firebase.firestore();
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
     prompt: 'select_account'
 });
 
-export const userAuthentication = ({auth, email, password}) => createUserWithEmailAndPassword(auth, email, password);
-
+export const userAuthentication = ({ email, password}) => createUserWithEmailAndPassword(auth, email, password);
+export const userSignIn = ({email, password}) => signInWithEmailAndPassword(auth, email, password);
 export const signInWithGoogle = () => signInWithPopup(auth, provider);

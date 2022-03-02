@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { CustomButton } from '../../forms/custom-button/custom-button.component';
 import { FormInput } from '../../forms/form-input/form-input.component';
-import { auth, createUserProfileDocument, userAuthentication } from '../../../firebase/firebase.util';
+import { createUserProfileDocument, userAuthentication } from '../../../firebase/firebase.util';
 
 import './sign-up.styles.scss';
 
@@ -27,7 +27,7 @@ export class SignUp extends Component {
         if(password != confirmPassword) return alert('Password don\'t match');
 
         try{
-            const { user } = await userAuthentication({auth, email, password});
+            const { user } = await userAuthentication({ email, password});
 
             await createUserProfileDocument(user, { displayName });
 
