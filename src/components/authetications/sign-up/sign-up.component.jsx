@@ -24,7 +24,7 @@ export class SignUp extends Component {
 
         const {displayName, email, password, confirmPassword} = this.state;
 
-        if(password != confirmPassword) return alert('Password don\'t match');
+        if(password !== confirmPassword) return alert('Password don\'t match');
 
         try{
             const { user } = await userAuthentication({ email, password});
