@@ -1,14 +1,26 @@
 import './cart-dropdown.styles.scss';
 
-import { CustomButton } from '../../forms/custom-button/custom-button.component';
+import { connect } from 'react-redux';
 
-const CartDropdown = () => (
+import { CustomButton } from '../../forms/custom-button/custom-button.component';
+import CartItem from '../cart-item/cart-item.component';
+
+const CartDropdown = ({cartItems}) => (
     <div className="cart-dropdown">
         <div className="cart-items">
-            <CustomButton>Go To Checkout</CustomButton>
+            {
+                cartItems.map(
+                    cartItem => <CartItem key={cartItem.id} item={cartItem}/>
+                )
+            }
         </div>
+        <CustomButton>Go To Checkout</CustomButton>
     </div>
 );
 
 
-export default CartDropdown;
+const mapStateToProps = ({cart: { cartItems }}) => ({
+    cartItems
+});
+
+export default connect(mapStateToProps)(CartDropdown);
