@@ -1,12 +1,13 @@
-import { useNavigate as navigateTo } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './menu-item.styles.scss';
 
 const MenuItem = props => {
     const {title, imageUrl, size, linkUrl} = props;
+    const navigateTo = useNavigate();
     return (
         <div 
             className={`${size} menu-item`}
-            onClick={()=>navigateTo(`${linkUrl}`)}
+            onClick={() => (navigateTo(`${linkUrl}`))}
         >
             <div
                 style={
