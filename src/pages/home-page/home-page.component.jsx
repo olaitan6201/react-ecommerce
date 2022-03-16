@@ -1,4 +1,4 @@
-import { Directory } from '../../components/directory/directory.component';
+import Directory from '../../components/directory/directory.component';
 import './home-page.style.scss';
 
 export const HomePage = () => (
