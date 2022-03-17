@@ -1,6 +1,6 @@
 import CollectionsOverviewComponent from "../../components/collections-overview/collections-overview.component";
 import { matchPath, matchRoutes, Route, Routes, useRoutes } from "react-router-dom";
-import CategoryPage from "../category/category.component";
+import CollectionPage from "../collection/collection.component";
 
 const ShopPage = () =>{ 
     console.log(useRoutes);
@@ -8,7 +8,7 @@ const ShopPage = () =>{
         <div className="shop-page">
             <Routes>
                 <Route path='' element={<CollectionsOverviewComponent/>}/>
-                <Route path=':category' element={<CategoryPage/>}/>
+                <Route path=':category' element={<CollectionPage/>}/>
             </Routes>
         </div>
     )
