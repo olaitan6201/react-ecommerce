@@ -45,7 +45,7 @@ class App extends Component {
                 <Route path = ''
                 element = { < HomePage /> }
                 /> 
-                <Route path = '/shop'
+                <Route path = '/shop/*'
                 element = { < ShopPage /> }
                 /> 
                 <Route path = '/checkout'
