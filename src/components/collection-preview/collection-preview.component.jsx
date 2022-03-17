@@ -14,4 +14,4 @@ export const CollectionPreview = ({title, items}) => (
             }
         </div>
     </div>
-);
+);  
