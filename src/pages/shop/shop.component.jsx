@@ -1,9 +1,8 @@
 import CollectionsOverviewComponent from "../../components/collections-overview/collections-overview.component";
-import { matchPath, matchRoutes, Route, Routes, useRoutes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CollectionPage from "../collection/collection.component";
 
 const ShopPage = () =>{ 
-    console.log(useRoutes);
     return (
         <div className="shop-page">
             <Routes>
